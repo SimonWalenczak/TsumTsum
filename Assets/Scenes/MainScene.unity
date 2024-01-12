@@ -773,6 +773,8 @@ GameObject:
   - component: {fileID: 706821674}
   - component: {fileID: 706821673}
   - component: {fileID: 706821675}
+  - component: {fileID: 706821677}
+  - component: {fileID: 706821676}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -837,6 +839,37 @@ MonoBehaviour:
   _timerText: {fileID: 1370094466}
   _scoreText: {fileID: 1116925071}
   StartTimer: 0
+--- !u!114 &706821676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706821672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fff06bacb8b2e4e8d703b66ed8e905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tsumLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  mainCamera: {fileID: 519420031}
+  selectedTsum: {fileID: 0}
+--- !u!114 &706821677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706821672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08378ad7edf284478fd870c8f10c666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TsumsInGame: []
+  TsumsSelected: []
 --- !u!1 &903134201
 GameObject:
   m_ObjectHideFlags: 0

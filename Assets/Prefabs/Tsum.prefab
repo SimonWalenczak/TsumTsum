@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4604983261012109811}
   - component: {fileID: -2396521348443780583}
   - component: {fileID: 3658598494756226527}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tsum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
