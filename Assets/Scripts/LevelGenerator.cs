@@ -8,6 +8,7 @@ public class LevelGenerator : MonoBehaviour
 {
     public static LevelGenerator Instance;
 
+    [Header("Tsums Properties")]
     [SerializeField] private GameObject _tsumsParent;
     [SerializeField] private GameObject _tsumPrefab;
     public List<Sprite> TsumSprites;
@@ -21,6 +22,11 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField] private float _timeBeforeGameStart = 2;
     [SerializeField] private GameObject StartText;
+
+    [Space(10)] [Header("Rewards")] 
+    public int Star1Score;
+    public int Star2Score;
+    public int Star3Score;
     
     private void Awake()
     {
