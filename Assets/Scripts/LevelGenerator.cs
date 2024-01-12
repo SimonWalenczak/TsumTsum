@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
@@ -20,13 +22,17 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float timerReset = 0.2f;
     private float actualTimer;
 
-    [SerializeField] private float _timeBeforeGameStart = 2;
+    public float FreezeTimeSP;
+    public bool TimeFreeze;
     [SerializeField] private GameObject StartText;
 
     [Space(10)] [Header("Rewards")] 
     public int Star1Score;
     public int Star2Score;
     public int Star3Score;
+    public TMP_Text RewardText1;
+    public TMP_Text RewardText2;
+    public TMP_Text RewardText3;
     
     private void Awake()
     {
@@ -43,6 +49,10 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         float actualTimer = timerReset;
+
+        RewardText1.text = Star1Score.ToString();
+        RewardText2.text = Star2Score.ToString();
+        RewardText3.text = Star3Score.ToString();
     }
 
     private void Update()

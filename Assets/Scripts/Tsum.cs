@@ -30,7 +30,7 @@ public class Tsum : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (TsumManager.Instance.FirstSelected == null)
+        if (TsumManager.Instance.FirstSelected == null && UIManager.Instance.StartTimer)
         {
             IsSelected = true;
             TsumManager.Instance.FirstSelected = this;
@@ -49,7 +49,7 @@ public class Tsum : MonoBehaviour
 
                 print($"Distance between the last and the actual selected : " + dist);
 
-                if (IndexType == TsumManager.Instance.FirstSelected.IndexType && dist <= 1.1f)
+                if (IndexType == TsumManager.Instance.FirstSelected.IndexType && dist <= 1.3f)
                 {
                     IsSelected = true;
                     TsumManager.Instance.TsumsSelected.Add(this);

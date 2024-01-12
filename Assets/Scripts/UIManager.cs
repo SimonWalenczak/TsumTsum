@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -21,8 +20,14 @@ public class UIManager : MonoBehaviour
 
     [HideInInspector] public bool StartTimer;
 
+    [Space(10)] [Header("SuperPower")] public bool SPUnlock;
+    [SerializeField] private GameObject SPButton;
+    [SerializeField] private GameObject FreezeDebug;
+    float actualFreezeTime;
+
     [Space(10)] [Header("GameOverPanel")] [SerializeField]
     private GameObject GameOverPanel;
+
     public List<Image> Stars;
     [SerializeField] private TMP_Text FinalScoreText;
 
@@ -45,20 +50,48 @@ public class UIManager : MonoBehaviour
 
         _comboText = _comboPanel.GetComponentInChildren<TMP_Text>();
         _comboText.text = "0";
+
+        actualFreezeTime = LevelGenerator.Instance.FreezeTimeSP;
     }
 
     private void Update()
     {
+        if (SPUnlock)
+        {
+            SPButton.SetActive(true);
+        }
+        else
+        {
+            SPButton.SetActive(false);
+        }
+
+        if (LevelGenerator.Instance.TimeFreeze)
+        {
+            FreezeDebug.SetActive(true);
+
+            actualFreezeTime -= Time.deltaTime;
+
+            if (actualFreezeTime <= 0)
+            {
+                actualFreezeTime = LevelGenerator.Instance.FreezeTimeSP;
+                FreezeDebug.SetActive(false);
+                LevelGenerator.Instance.TimeFreeze = false;
+            }
+        }
+
         _scoreText.text = TsumManager.Instance.ActualScore.ToString();
 
         if (StartTimer)
         {
             if (_actualTimer > 0)
             {
-                _actualTimer -= Time.deltaTime;
-                _timerText.text = ((int)_actualTimer).ToString();
+                if (LevelGenerator.Instance.TimeFreeze == false)
+                {
+                    _actualTimer -= Time.deltaTime;
+                    _timerText.text = ((int)_actualTimer).ToString();
 
-                _timerDebug.fillAmount = _actualTimer / _timerStartValue;
+                    _timerDebug.fillAmount = _actualTimer / _timerStartValue;
+                }
             }
             else
             {
@@ -85,12 +118,12 @@ public class UIManager : MonoBehaviour
         if (TsumManager.Instance.ActualScore >= LevelGenerator.Instance.Star1Score)
         {
             Stars[0].color = Color.white;
-            
+
             if (TsumManager.Instance.ActualScore >= LevelGenerator.Instance.Star2Score)
             {
                 yield return new WaitForSeconds(1);
                 Stars[1].color = Color.white;
-                
+
                 if (TsumManager.Instance.ActualScore >= LevelGenerator.Instance.Star3Score)
                 {
                     yield return new WaitForSeconds(1);
@@ -98,5 +131,13 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ActiveSP()
+    {
+        print("BOOOOM !");
+        SPUnlock = false;
+        TsumManager.Instance.SPGauge.fillAmount = 0;
+        LevelGenerator.Instance.TimeFreeze = true;
     }
 }
