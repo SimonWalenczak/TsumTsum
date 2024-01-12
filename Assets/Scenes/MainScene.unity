@@ -1289,9 +1289,9 @@ MonoBehaviour:
   FreezeTimeSP: 5
   TimeFreeze: 0
   StartText: {fileID: 483840551}
-  Star1Score: 100
-  Star2Score: 150
-  Star3Score: 200
+  Star1Score: 200
+  Star2Score: 500
+  Star3Score: 1000
   RewardText1: {fileID: 1874436158}
   RewardText2: {fileID: 761807862}
   RewardText3: {fileID: 1541744384}
