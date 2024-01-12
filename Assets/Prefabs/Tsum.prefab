@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4405381203050502027}
   - component: {fileID: 8904947057584420690}
   - component: {fileID: 4604983261012109811}
-  - component: {fileID: -2396521348443780583}
   - component: {fileID: 3658598494756226527}
   m_Layer: 7
   m_Name: Tsum
@@ -150,41 +149,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.45
---- !u!58 &-2396521348443780583
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2779466686695198221}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.85
 --- !u!114 &3658598494756226527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,3 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IndexType: 0
   CanBeSelected: 0
+  IsSelected: 0

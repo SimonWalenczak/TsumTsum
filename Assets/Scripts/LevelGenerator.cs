@@ -67,7 +67,7 @@ public class LevelGenerator : MonoBehaviour
         UIManager.Instance.StartTimer = true;
     }
 
-    private void GenerateLevel()
+    public void GenerateLevel()
     {
         //Choose spawn position
         float spawnPosX = Random.Range(_spawnRange.x, _spawnRange.y);
