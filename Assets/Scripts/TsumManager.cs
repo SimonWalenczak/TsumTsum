@@ -10,6 +10,11 @@ public class TsumManager : MonoBehaviour
 
     public Tsum FirstSelected;
 
+    [Header("Combo")]
+    public int nbCombo;
+    [SerializeField] private float _timerComboReset;
+    [SerializeField] private float _actualTimerCombo;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -20,6 +25,11 @@ public class TsumManager : MonoBehaviour
         {
             Debug.LogError("There is already another TsumManager in this scene !");
         }
+    }
+
+    private void Start()
+    {
+        _actualTimerCombo = _timerComboReset;
     }
 
     private void Update()
@@ -37,6 +47,9 @@ public class TsumManager : MonoBehaviour
                 {
                     Destroy(tsum.gameObject);
                 }
+
+                nbCombo++;
+                _actualTimerCombo = _timerComboReset;
                 
                 for (int i = 0; i < TsumsSelected.Count; i++)
                 {
@@ -46,6 +59,17 @@ public class TsumManager : MonoBehaviour
 
             TsumsSelected.Clear();
             FirstSelected = null;
+        }
+
+        if (nbCombo != 0)
+        {
+            _actualTimerCombo -= Time.deltaTime;
+
+            if (_actualTimerCombo <= 0)
+            {
+                _actualTimerCombo = _timerComboReset;
+                nbCombo = 0;
+            }
         }
     }
 }

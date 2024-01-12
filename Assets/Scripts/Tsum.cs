@@ -7,6 +7,15 @@ public class Tsum : MonoBehaviour
     public int IndexType;
     public bool IsSelected;
 
+    public LineRenderer LineRenderer;
+
+    public Tsum PreviousTsumSelected;
+
+    private void Start()
+    {
+        LineRenderer = GetComponentInChildren<LineRenderer>();
+    }
+
     private void Update()
     {
         if (IsSelected)
@@ -44,9 +53,11 @@ public class Tsum : MonoBehaviour
                 {
                     IsSelected = true;
                     TsumManager.Instance.TsumsSelected.Add(this);
+                    if (TsumManager.Instance.TsumsSelected.Count >= 2)
+                        PreviousTsumSelected = TsumManager.Instance.TsumsSelected[^2];
                 }
             }
-            else if (this == TsumManager.Instance.TsumsSelected[^2])
+            else if (TsumManager.Instance.TsumsSelected.Count >= 2 && this == TsumManager.Instance.TsumsSelected[^2])
             {
                 TsumManager.Instance.TsumsSelected[^1].IsSelected = false;
                 TsumManager.Instance.TsumsSelected.RemoveAt(TsumManager.Instance.TsumsSelected.Count - 1);
